@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ScreenShoot Settings</title>
+        <style>
+        body {
+            font-family: sans-serif;
+            position: absolute;
+            margin: 0px;
+            overflow: hidden;
+            top: 0px;
+            bottom: 0px;
+            width: 100%;
+            background-color: #ebeceb;
+        }
+        .commands {
+            margin-top: 20px;
+            margin-left: 10px;
+            width: 30%;
+            height: auto;
+            float: left;
+            background-color: #e1e2e1;
+        }
+        .command-item {
+            height: 35px;
+            text-align: right;
+        }
+        .command-item:hover {
+            transition-duration: 0.3s;
+            background-color: lightgray;
+            cursor: pointer;
+        }
+        p {
+            padding-top: 8px;
+            padding-right: 15px;
+        }
+        input {
+            float: left;
+            height: 80%;
+            margin-left: 10px;
+        }
+        #screen {
+            float: right;
+            width: 340px;
+            height: 300px;
+            margin-top: 60px;
+            background-color:  #e1e2e1;
+        } 
+        </style>
+    </head>
+    <body>
+        <div class="commands">
+            <div class="command-item" id="silent"><input type="checkbox"><p>Silent</p></div>
+            <div class="command-item" id='clipboard'><input type="checkbox"><p>Clipboard</p></div>
+            <div class="command-item" id='mail'><input type="checkbox"><p>Preview</p></div>
+            <div class="command-item" id='message'><input type="checkbox"><p>Mail</p></div>
+            <div class="command-item" id='preview'><input type="checkbox"><p>Message</p></div>
+            <div class="command-item" id='window'><input type="checkbox"><p>Window Select</p></div>
+            <div class="command-item" id='timer'><input type="checkbox"><p>Timer</p></div>
+            <div class="command-item" id='select' style='padding-bottom: 5px;'><input type="checkbox"><p>Select Space</p></div>
+        </div>
+        <div id="screen">
+
+        </div>
+    </body>
+    <script>
+const fs = require('fs')
+let screen = document.getElementById('screen')
+let x = [false,false,false,false,false,false,2,false,false,false,false];
+let count = 1;
+fs.readFile('assets/settings/settings.json', 'utf-8', (err, data) => {
+    if (err) throw err;
+    x = data;
+})
+fs.writeFile('assets/settings/settings.json', '['+x+']' ,(err)=>{if (err) throw err;});
+document.getElementById('silent').onclick = function(){
+    if (count === 1) {
+        screen.innerHTML = '<h4 style="text-align: center; padding-top: 25px;">Makes the screenshot silent</h4>'
+        count = 0
+    } else {
+        screen.innerHTML = ' '
+        count++
+    }
+}
+document.getElementById('clipboard').onclick = function(){
+    if (count === 1) {
+        screen.innerHTML = '<img src="assets/images/image.mov">'
+        count = 0
+    } else {
+        screen.innerHTML = ' '
+        count++
+    }
+}
+    </script>
+</html>

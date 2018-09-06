@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Error</title>
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+        </style>
+        <script>
+        const fs = require('fs')
+        let key;
+        function sub() {
+            key = document.getElementById('input').value;
+            if (document.getElementById('ch').innerHTML != key) {
+                fs.writeFile('assets/settings/commandKey.txt', key, (err)=>{if(err)throw err;})
+            } else {
+                document.getElementById('input').value = ""
+            }
+        }
+        function check() {
+            fs.readFile('assets/settings/commandKey.txt', 'utf-8', (err, data) => {
+                document.getElementById('ch').innerHTML = data;
+                lastKey = data;
+            })
+        }
+        </script>
+    </head>
+    <body onload="check()">
+        <p id="lab" style="width: 90%; margin-left: 5%; text-align: center">Another app is interfering with our command for taking screenshots. Please enter the key you would like to use to take a screenshot. It cannot be '<span id="ch"></span>'.</p>
+        <label id="com" for="input" style="margin-left: 8px;">Command-</label>
+        <input type="text" required id="input" minlength="1" maxlength="1" style="width: 325px; height: 15px; border-radius: 2px" autofocus><br>
+        <button style="width: 55px; height: 20px; margin-left: 195px; background-color: dodgerblue; border-radius: 3px; border: none; margin-top: 10px;" onclick="sub()">Submit</button>
+    </body>
+</html>

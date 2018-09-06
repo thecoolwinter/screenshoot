@@ -1,0 +1,57 @@
+{
+  "name": "screenshoot",
+  "homepage": "https://www.thecoolwinter.github.io",
+  "version": "1.0.0",
+  "description": "A screenshot utility for macOs.",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "release": "build"
+  },
+  "keywords": [
+    "screenshot",
+    "macos"
+  ],
+  "author": {
+    "name": "string"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thecoolwinter/screenshoot.git"
+  },
+  "devDependencies": {
+    "electron": "^2.0.8"
+  },
+  "dependencies": {
+    "electron-builder": "^20.28.3",
+    "electron-updater": "^3.1.2"
+  },
+  "build": {
+    "id": "screenshoot.utility",
+    "productName": "Screenshoot",
+    "directories": {
+      "buildResources": "assets/build"
+    },
+    "mac": {
+      "category": "utility",
+      "target": "dmg",
+      "type": "development",
+      "minimumSystemVersion": "10.9"
+    },
+    "forceCodeSigning": "false",
+    "publish": {
+      "provider": "github",
+      "repo": {
+       "type": "git",
+       "url": "https://github.com/thecoolwinter/screenshoot.git" 
+      },
+      "owner": "thecoolwinter",
+      "host": "github.com",
+      "protocol": "https",
+      "releaseType": "draft"
+    }
+  }
+}
