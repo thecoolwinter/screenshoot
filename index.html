@@ -46,6 +46,11 @@
             margin-top: 60px;
             background-color:  #e1e2e1;
         } 
+        #selectButton {
+            width: 55px;
+            height: 20px;
+            background-color: #ebeceb;
+        }
         </style>
     </head>
     <body>
@@ -84,7 +89,61 @@ document.getElementById('silent').onclick = function(){
 }
 document.getElementById('clipboard').onclick = function(){
     if (count === 1) {
-        screen.innerHTML = '<img src="assets/images/image.mov">'
+        screen.innerHTML = '<h4 style="text-align: center; padding-top: 25px;">Adds the screenshot to your clipboard. If you press Command-V in a pages document or something like that it will paste the screenshot there.</h4>'
+        count = 0
+    } else {
+        screen.innerHTML = ' '
+        count++
+    }
+}
+document.getElementById('mail').onclick = function(){
+    if (count === 1) {
+        screen.innerHTML = '<h4 style="text-align: center; padding-top: 25px;">Will open the screenshot in a new mail message.</h4>'
+        count = 0
+    } else {
+        screen.innerHTML = ' '
+        count++
+    }
+}
+document.getElementById('message').onclick = function(){
+    if (count === 1) {
+        screen.innerHTML = '<h4 style="text-align: center; padding-top: 25px;">Will open the screenshot in a new iMessage message.</h4>'
+        count = 0
+    } else {
+        screen.innerHTML = ' '
+        count++
+    }
+}
+document.getElementById('preview').onclick = function(){
+    if (count === 1) {
+        screen.innerHTML = '<h4 style="text-align: center; padding-top: 25px;">Will open the screenshot in a new preview window.</h4>'
+        count = 0
+    } else {
+        screen.innerHTML = ' '
+        count++
+    }
+}
+document.getElementById('window').onclick = function(){
+    if (count === 1) {
+        screen.innerHTML = "<h4 style='text-align: center; padding-top: 25px;'>When you take the screenshot your sursor will turn into a camera and will highlight the window it's on and whichever window you click on will be screenshotted.</h4>"
+        count = 0
+    } else {
+        screen.innerHTML = ' '
+        count++
+    }
+}
+document.getElementById('timer').onclick = function(){
+    if (count === 1) {
+        screen.innerHTML = '<h4 style="text-align: center; padding-top: 25px;">Adds a delay (in seconds) from when you press the command to when the screenshot is taken</h4>'
+        count = 0
+    } else {
+        screen.innerHTML = ' '
+        count++
+    }
+}
+document.getElementById('select').onclick = function(){
+    if (count === 1) {
+        screen.innerHTML = '<h4 style="text-align: center; padding-top: 25px;">Will take the screenshot in a pre-determined area of the screen. Click the button below to change area.<br><button id="selectButton">Select Area</button></h4>'
         count = 0
     } else {
         screen.innerHTML = ' '
